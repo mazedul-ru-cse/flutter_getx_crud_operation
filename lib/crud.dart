@@ -73,7 +73,6 @@ class CRUD extends StatelessWidget {
             studentController.nameController.text = studentModel.name;
             studentController.phoneNumberController.text = studentModel.phoneNumber;
             Get.to(EditStudent(index: index));
-
             }, icon: Icon(Icons.edit,color: Colors.grey,)),
         ],
       ),

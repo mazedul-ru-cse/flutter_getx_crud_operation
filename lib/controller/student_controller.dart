@@ -9,7 +9,7 @@ class StudentController extends GetxController{
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
 
-  RxList<StudentModel> studentModel = <StudentModel>[].obs;
+  List<StudentModel> studentModel = <StudentModel>[];
 
   bool isLoading = false;
 
@@ -24,7 +24,7 @@ class StudentController extends GetxController{
 
     isLoading = false;
     for (var element in Storage.users) {
-      studentModel.value.add(StudentModel.formJson(element));
+      studentModel.add(StudentModel.formJson(element));
     }
     isLoading = true;
     update();
@@ -36,7 +36,7 @@ class StudentController extends GetxController{
     String name = nameController.text ;
     String phoneNumber = phoneNumberController.text;
 
-    studentModel.value.add(StudentModel.formJson({
+    studentModel.add(StudentModel.formJson({
       "id":id,
       "name":name,
       "phone_number":phoneNumber
@@ -59,7 +59,7 @@ class StudentController extends GetxController{
     String name = nameController.text ;
     String phoneNumber = phoneNumberController.text;
 
-    studentModel.value.insert(index,StudentModel.formJson({
+    studentModel.insert(index,StudentModel.formJson({
       "id":id,
       "name":name,
       "phone_number":phoneNumber
@@ -76,7 +76,7 @@ class StudentController extends GetxController{
 
   void deleteStudent(int index){
 
-    studentModel.value.removeAt(index);
+    studentModel.removeAt(index);
     update();
   }
 
