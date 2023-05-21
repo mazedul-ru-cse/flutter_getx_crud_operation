@@ -4,8 +4,10 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:getx_crud/controller/student_controller.dart';
 
 // ignore: must_be_immutable
-class AddStudent extends StatelessWidget {
-  AddStudent({Key? key}) : super(key: key);
+class EditStudent extends StatelessWidget {
+  EditStudent({Key? key, required this.index}) : super(key: key);
+
+  final int index;
 
   StudentController studentController = Get.find();
 
@@ -14,12 +16,12 @@ class AddStudent extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add a new student"),
+        title: const Text("Edit student information"),
         centerTitle: true,
         automaticallyImplyLeading: true,
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
           child: getBody()),
     );
   }
@@ -35,8 +37,8 @@ class AddStudent extends StatelessWidget {
           child: TextField(
             controller: studentController.idController,
             decoration: InputDecoration(
-              hintText: "Enter Id",
-              labelText: "ID"
+                hintText: "Enter Id",
+                labelText: "ID"
             ),
           ),
         ),
@@ -66,7 +68,7 @@ class AddStudent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(onPressed: (){
-            studentController.addStudent();
+            studentController.editStudent(index);
             Get.back();
 
           }, child: Text("Submit")),
